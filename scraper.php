@@ -47,7 +47,7 @@ function extractData($names, $addresses, $phone_numbers, $dealer_names){
 
 }
 function getName($names, $addresses, $phone_numbers, $dealer_names){
-    for ($i = 0; $i < 11; $i++){
+    for ($i = 0; $i < count($names); $i++){
         $str = preg_replace("/[\r\n]*/","",$names[$i]);
         $matches = [];
         $pattern = "/\s\s.*ltd/i";
@@ -63,7 +63,7 @@ function writeData($addresses, $phone_numbers, $dealer_names){
     fputcsv($file, array("Dealer Name", "Address", "Phone"));
     $final_array = [];
 
-    for($i = 0; $i < 11; $i++){
+    for($i = 0; $i < count($dealer_names); $i++){
     array_push($final_array, array($dealer_names[$i],$addresses[$i], $phone_numbers[$i]));
     }
 
