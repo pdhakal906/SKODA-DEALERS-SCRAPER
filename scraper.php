@@ -50,7 +50,7 @@ function getName($names, $addresses, $phone_numbers, $dealer_names){
     for ($i = 0; $i < count($names); $i++){
         $str = preg_replace("/[\r\n]*/","",$names[$i]);
         $matches = [];
-        $pattern = "/\s\s.*ltd/i";
+        $pattern = "/(?<=\s\s\s).*(?=East|West|North|South|CNCR|)/i";
         preg_match($pattern, $str, $matches);
         $dealer_name = trim($matches[0]);
         array_push($dealer_names, $dealer_name);
